@@ -1,0 +1,68 @@
+{
+  "github": {
+    "url": "https://github.com/orgs/kouzoh/projects/44/views/45",
+    "timeout_seconds": 30,
+    "rate_limit_per_hour": 5000,
+    "max_retries": 3,
+    "page_size": 100,
+    "max_issues_limit": 10000,
+    "user_agent": "GitHub-OKR-Fetcher/1.0"
+  },
+  "labels": {
+    "required": [
+      "kind/okr",
+      "team/network",
+      "target/2026-q1"
+    ]
+  },
+  "filter": {
+    "query": "label:\"target/2026-q1\" label:\"kind/okr\" is:issue",
+    "use_search": true
+  },
+  "output": {
+    "format": "google-docs",
+    "file": "",
+    "title": "Platform Division - Network OKRs",
+    "filename_pattern": "okr-report_%s_%d_%d_%s%s",
+    "timestamp_format": "20060102_150405",
+    "progress_bar_segments": 10,
+    "google_docs": {
+      "url": "https://docs.google.com/document/d/1_fhw9_feEdv8SoCPN5hcB7_vT3mJ4D8ahuUMgGZmAEo/edit?tab=t.0"
+    }
+  },
+  "performance": {
+    "max_concurrency": 10,
+    "rate_limit_per_hour": 5000,
+    "cache_enabled": true
+  },
+  "default_values": {
+    "organization": "kouzoh",
+    "repository": "microservices"
+  },
+  "litellm": {
+    "base_url": "https://litellm.mercari.in",
+    "model": "gpt-4o",
+    "enabled": false,
+    "timeout_seconds": 60,
+    "analysis_word_limit": 100
+  },
+  "cache": {
+    "enabled": true,
+    "issues_ttl_minutes": 10,
+    "comments_ttl_minutes": 5,
+    "graphql_ttl_minutes": 5
+  },
+  "patterns": {
+    "weekly_update_regex": "(?mi)^#\\s*weekly\\s+update\\s+(\\d{4}-\\d{2}-\\d{2})",
+    "parent_issue_patterns": [
+      "(?i)parent\\s*(?:issue)?\\s*:?\\s*#(\\d+)",
+      "(?i)parent\\s*(?:issue)?\\s*:?\\s*https://github\\.com/[^/]+/[^/]+/issues/(\\d+)"
+    ]
+  },
+  "status_detection": {
+    "completed_keywords": ["completed", "done", "finished", "✅", "✓"],
+    "blocked_keywords": ["blocked", "stuck", "issue", "problem", "🚫", "❌"],
+    "at_risk_keywords": ["behind", "delayed", "risk", "concern", "⚠️", "🟡"],
+    "on_track_keywords": ["on track", "progress", "good", "🟢", "✅"]
+  }
+}
